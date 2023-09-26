@@ -1,7 +1,8 @@
 import "./App.css";
 import React, { useEffect, useState } from "react";
-import Weather from "./components/weather";
-import WeatherData from "./components/WeatherTypes";
+import Weather from "./components/CurrentWeather";
+import WeatherData from "./resources/WeatherInterface";
+//import CalcClothing from "./resources/CalcClothing";
 
 function App() {
   const [lat, setLat] = useState<number | null>(null);
