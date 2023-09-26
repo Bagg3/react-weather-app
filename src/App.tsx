@@ -3,38 +3,51 @@ import React, { useEffect, useState } from "react";
 import Weather from "./components/weather";
 import WeatherData from "./components/WeatherTypes";
 
-import.meta.env.VITE_REACT_APP_ICON_URL;
-
 function App() {
   const [lat, setLat] = useState<number | null>(null);
   const [long, setLong] = useState<number | null>(null);
   const [data, setData] = useState<WeatherData | null>(null);
-  console.log("HEJ");
+  const [weekData, setWeekData] = useState<WeatherData[] | null>(null);
 
   const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
   const apiKey = import.meta.env.VITE_REACT_APP_API_KEY;
 
   useEffect(() => {
     const fetchData = async () => {
-      navigator.geolocation.getCurrentPosition(function (position) {
-        setLat(position.coords.latitude);
-        setLong(position.coords.longitude);
-      });
-
-      await fetch(
-        `${apiUrl}/weather/?lat=${lat}&lon=${long}&units=metric&APPID=${apiKey}`
+      navigator.geolocation.getCurrentPosition(
+        function (position) {
+          setLat(position.coords.latitude);
+          setLong(position.coords.longitude);
+        },
+        function (error) {
+          // Handle location access denial or error
+          console.error("Error getting location:", error);
+          // You can show a user-friendly message here
+        }
       );
-      await fetch(
-        `${process.env.VITE_REACT_APP_API_URL}/weather/?lat=${lat}&lon=${long}&units=metric&APPID=${process.env.VITE_REACT_APP_API_KEY}`
-      )
-        .then((res) => res.json())
-        .then((result) => {
-          setData(result);
-          console.log("Weather data:", result);
-        });
+
+      if (lat !== null && long !== null) {
+        await fetch(
+          `${apiUrl}/weather/?lat=${lat}&lon=${long}&units=metric&lang=da&APPID=${apiKey}`
+        )
+          .then((res) => res.json())
+          .then((result) => {
+            setData(result);
+            console.log("Weather data:", result);
+          });
+
+        await fetch(
+          `${apiUrl}/forecast/?lat=${lat}&lon=${long}&units=metric&APPID=${apiKey}`
+        )
+          .then((res) => res.json())
+          .then((result) => {
+            setWeekData(result.daily);
+            console.log("API Response for Weekly Forecast:", result);
+          });
+      }
     };
     fetchData();
-  }, [lat, long]);
+  }, [lat, long, apiUrl, apiKey, weekData]);
 
   return (
     <div className="App">
@@ -42,4 +55,5 @@ function App() {
     </div>
   );
 }
+
 export default App;
