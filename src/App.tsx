@@ -1,6 +1,6 @@
 import "./App.css";
 import React, { useEffect, useState } from "react";
-import Weather from "./components/CurrentWeather";
+import CurWeather from "./components/CurrentWeather";
 import WeatherData from "./resources/WeatherInterface";
 //import CalcClothing from "./resources/CalcClothing";
 
@@ -23,7 +23,6 @@ function App() {
         function (error) {
           // Handle location access denial or error
           console.error("Error getting location:", error);
-          // You can show a user-friendly message here
         }
       );
 
@@ -44,6 +43,7 @@ function App() {
           .then((result) => {
             setWeekData(result.daily);
             console.log("API Response for Weekly Forecast:", result);
+            console.log("DATA:", result.list[0]); // Get only 1 array
           });
       }
     };
@@ -52,7 +52,11 @@ function App() {
 
   return (
     <div className="App">
-      {data !== null ? <Weather weatherData={data} /> : <div>Loading...</div>}
+      {data !== null ? (
+        <CurWeather weatherData={data} />
+      ) : (
+        <div>Loading...</div>
+      )}
     </div>
   );
 }

@@ -1,27 +1,12 @@
 import WeatherData from "./WeatherInterface";
+// CALCULATIONS NOT CORRECT
 
 function CalcClothing(weather: WeatherData) {
-  weather.main.temp;
-  weather.main.humidity;
-  weather.wind.speed;
-  weather.main.feels_like;
-  weather.sys.sunset;
-
-  const { hours, minutes } = getTimeToSunset(weather.sys.sunset);
-  let tempFactor = weather.main.feels_like;
-
-  if (hours < 2) {
-    tempFactor = tempFactor - 4;
-  }
-
-  return tempFactor;
+  return caclCompleteFactor(weather.main.feels_like, weather);
 }
 
-// Convert a UNIX timestamp to hours and minutes
-function getTimeToSunset(timestamp: number): {
-  hours: number;
-  minutes: number;
-} {
+// Convert a UNIX timestamp to hours
+function getTimeToSunset(timestamp: number): number {
   // Convert the timestamp to milliseconds
   const timestampInMilliseconds = timestamp * 1000;
 
@@ -30,15 +15,47 @@ function getTimeToSunset(timestamp: number): {
 
   // Calculate the time difference in milliseconds
   const timeDifferenceInMilliseconds =
-    currentTimeInMilliseconds - timestampInMilliseconds;
+    timestampInMilliseconds - currentTimeInMilliseconds;
 
-  // Calculate hours and minutes
-  const hours = Math.floor(timeDifferenceInMilliseconds / (1000 * 60 * 60));
-  const minutes = Math.floor(
-    (timeDifferenceInMilliseconds % (1000 * 60 * 60)) / (1000 * 60)
-  );
+  // Calculate hours
+  const hours = timeDifferenceInMilliseconds / (1000 * 60 * 60);
 
-  return { hours, minutes };
+  return hours;
+}
+
+function calcTimeFactor(hour: number) {
+  let tempFactor = 0;
+  if (hour < 2.5) {
+    tempFactor = tempFactor - 2;
+  }
+
+  return tempFactor;
+}
+
+function caclWindFactor(wind: number) {
+  let windFactor = 0;
+  if (wind > 10) {
+    windFactor = windFactor - 2;
+  }
+  return windFactor;
+}
+
+function calcHumidityFactor(humidity: number) {
+  let humidityFactor = 0;
+  if (humidity > 50) {
+    humidityFactor = humidityFactor - 2;
+  }
+  return humidityFactor;
+}
+
+function caclCompleteFactor(temp: number, weather: WeatherData) {
+  const timeFactor = calcTimeFactor(getTimeToSunset(weather.sys.sunset));
+  const windFactor = caclWindFactor(weather.wind.speed);
+  const humidityFactor = calcHumidityFactor(weather.main.humidity);
+  temp = temp + timeFactor;
+  temp = temp + windFactor;
+  temp = temp + humidityFactor;
+  return temp;
 }
 
 export default CalcClothing;
