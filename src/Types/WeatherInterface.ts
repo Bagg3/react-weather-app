@@ -1,4 +1,4 @@
-interface WeatherData {
+export interface WeatherData {
   main: {
     temp: number; // Temperature in Celsius
     humidity: number; // Humidity percentage
@@ -24,4 +24,7 @@ interface WeatherData {
   // Add other properties as needed to match the data you receive from OpenWeather
 }
 
-export default WeatherData;
+export type day = {
+  day: string;
+  data: WeatherData[];
+};

@@ -1,7 +1,7 @@
 import "./App.css";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import CurWeather from "./components/CurrentWeather";
-import WeatherData from "./resources/WeatherInterface";
+import {WeatherData} from "./Types/WeatherInterface";
 //import CalcClothing from "./resources/CalcClothing";
 
 function App() {

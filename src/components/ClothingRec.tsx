@@ -1,5 +1,5 @@
-import WeatherData from "../resources/WeatherInterface";
-import CalcClothing from "../resources/CalcClothing";
+import {WeatherData} from "../Types/WeatherInterface";
+import CalcClothing from "../Utility/CalcClothing";
 
 const calcClothingRec = ({ weatherData }: { weatherData: WeatherData }) =>
   CalcClothing(weatherData) => ();

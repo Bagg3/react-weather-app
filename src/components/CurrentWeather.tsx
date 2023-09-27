@@ -1,4 +1,4 @@
-import WeatherData from "../resources/WeatherInterface";
+import {WeatherData} from "../Types/WeatherInterface";
 
 const Weather = ({ weatherData }: { weatherData: WeatherData }) => (
   <div className="max-w-sm rounded overflow-hidden shadow-lg">
