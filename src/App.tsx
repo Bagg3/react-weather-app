@@ -1,7 +1,6 @@
-import "./App.css";
 import { useEffect, useState } from "react";
 import CurWeather from "./components/CurrentWeather";
-import {WeatherData} from "./Types/WeatherInterface";
+import { WeatherData } from "./Types/WeatherInterface";
 //import CalcClothing from "./resources/CalcClothing";
 
 function App() {
@@ -44,6 +43,7 @@ function App() {
             setWeekData(result.daily);
             console.log("API Response for Weekly Forecast:", result);
             console.log("DATA:", result.list[0]); // Get only 1 array
+            console.log("DATA2: ", result.list[0].dt_txt); // Get only 1 array")
           });
       }
     };
