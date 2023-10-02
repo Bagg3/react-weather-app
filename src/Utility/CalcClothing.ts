@@ -2,7 +2,7 @@ import { WeatherData } from "../Types/WeatherInterface";
 // CALCULATIONS NOT CORRECT
 
 function CalcClothing(weather: WeatherData) {
-  return caclCompleteFactor(weather.main.feels_like, weather);
+  return calcCompleteFactor(weather.main.feels_like, weather);
 }
 
 // Convert a UNIX timestamp to hours
@@ -32,7 +32,7 @@ function calcTimeFactor(hour: number) {
   return tempFactor;
 }
 
-function caclWindFactor(wind: number) {
+function calcWindFactor(wind: number) {
   let windFactor = 0;
   if (wind > 10) {
     windFactor = windFactor - 2;
@@ -48,9 +48,9 @@ function calcHumidityFactor(humidity: number) {
   return humidityFactor;
 }
 
-function caclCompleteFactor(temp: number, weather: WeatherData) {
+function calcCompleteFactor(temp: number, weather: WeatherData) {
   const timeFactor = calcTimeFactor(getTimeToSunset(weather.sys.sunset));
-  const windFactor = caclWindFactor(weather.wind.speed);
+  const windFactor = calcWindFactor(weather.wind.speed);
   const humidityFactor = calcHumidityFactor(weather.main.humidity);
   temp = temp + timeFactor;
   temp = temp + windFactor;

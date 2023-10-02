@@ -1,4 +1,4 @@
-import {WeatherData} from "../Types/WeatherInterface";
+import { WeatherData } from "../Types/WeatherInterface";
 
 const Weather = ({ weatherData }: { weatherData: WeatherData }) => (
   <div className="max-w-sm rounded overflow-hidden shadow-lg">
@@ -7,7 +7,7 @@ const Weather = ({ weatherData }: { weatherData: WeatherData }) => (
       <p className="header font-bold text-xl">
         {weatherData.name.replace("Kommune", "")}
       </p>
-      <p>Temprature: {weatherData.main.temp} &deg;C</p>
+      <p>Temperature: {weatherData.main.temp} &deg;C</p>
       {weatherData.main.temp - weatherData.main.feels_like > 2 ? (
         <p> Feels like: {weatherData.main.feels_like} &deg;C</p>
       ) : null}

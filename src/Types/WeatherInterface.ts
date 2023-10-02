@@ -3,7 +3,7 @@ export interface WeatherData {
     temp: number; // Temperature in Celsius
     humidity: number; // Humidity percentage
     pressure: number; // Atmospheric pressure in hPa
-    desription: string; // Weather description (e.g., "Clear sky")
+    description: string; // Weather description (e.g., "Clear sky")
     feels_like: number; // Temperature that feels like in Celsius
   };
   weather: {
