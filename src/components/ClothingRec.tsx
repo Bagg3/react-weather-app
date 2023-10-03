@@ -24,10 +24,13 @@ const CalcClothingRec = ({ weatherData }: CalcClothingRecProps) => {
 };
 
 function ClothingRec(clothingIndex: number) {
-  if (clothingIndex === 0) {
-    return "Jacket";
-  } else {
-    return "T-shirt";
+  switch (clothingIndex) {
+    case 1:
+      return "T-shirt og shorts";
+    case 2:
+      return "T-shirt og shorts";
+    case 3:
+      return "T-shirt og shorts";
   }
 }
 
