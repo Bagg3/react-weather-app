@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import CurWeather from "./components/CurrentWeather";
 import { WeatherData } from "./Types/WeatherInterface";
-//import CalcClothing from "./resources/CalcClothing";
+import CalcClothingRec from "./components/ClothingRec";
+//import FetchWeather from "./Utility/FetchWeather";
 
 function App() {
   const [lat, setLat] = useState<number | null>(null);
@@ -57,6 +58,9 @@ function App() {
       ) : (
         <div>Loading...</div>
       )}
+      <div className="App">
+        <CalcClothingRec weatherData={data} />
+      </div>
     </div>
   );
 }
