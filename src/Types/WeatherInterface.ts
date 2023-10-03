@@ -28,3 +28,7 @@ export type day = {
   day: string;
   data: WeatherData[];
 };
+
+export type week = {
+  week: day[];
+};
