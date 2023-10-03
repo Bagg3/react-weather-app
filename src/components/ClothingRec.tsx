@@ -24,14 +24,25 @@ const CalcClothingRec = ({ weatherData }: CalcClothingRecProps) => {
 };
 
 function ClothingRec(clothingIndex: number) {
-  switch (clothingIndex) {
-    case 1:
-      return "T-shirt og shorts";
-    case 2:
-      return "T-shirt og shorts";
-    case 3:
-      return "T-shirt og shorts";
+  // Define intervals and their corresponding clothing recommendations
+  const intervals = [
+    { min: 0, max: 10, recommendation: "Jacket" },
+    { min: 11, max: 20, recommendation: "Sweater" },
+    { min: 21, max: 30, recommendation: "T-shirt" },
+    // Add more intervals and recommendations as needed
+  ];
+
+  // Find the recommendation based on the clothingIndex
+  let recommendation = "Unknown"; // Default recommendation if no interval matches
+
+  for (const interval of intervals) {
+    if (clothingIndex >= interval.min && clothingIndex <= interval.max) {
+      recommendation = interval.recommendation;
+      break; // Stop looping when an interval is found
+    }
   }
+
+  return recommendation;
 }
 
 export default CalcClothingRec;
