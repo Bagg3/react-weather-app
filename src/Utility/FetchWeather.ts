@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { WeatherData } from "../Types/WeatherInterface";
+import { WeatherData, WeekData } from "../Types/WeatherInterface";
 
 function FetchWeather() {
   const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -7,7 +7,7 @@ function FetchWeather() {
   const [lat, setLat] = useState<number | null>(null);
   const [long, setLong] = useState<number | null>(null);
   const [data, setData] = useState<WeatherData | null>(null);
-  const [weekData, setWeekData] = useState<WeatherData[] | null>(null);
+  const [weekData, setWeekData] = useState<WeekData | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,7 +37,7 @@ function FetchWeather() {
         )
           .then((res) => res.json())
           .then((result) => {
-            setWeekData(result.daily);
+            setWeekData(result);
             console.log("API Response for Weekly Forecast:", result);
             console.log("DATA:", result.list[0]); // Get only 1 array
             console.log("DATA2: ", result.list[0].dt_txt); // Get only 1 array")
@@ -46,6 +46,10 @@ function FetchWeather() {
     };
     fetchData();
   }, [lat, long, apiUrl, apiKey, weekData]);
+
+  useEffect(() => {
+    console.log("WeekData changed:", weekData);
+  }, [weekData]);
 
   return { data, weekData };
 }
