@@ -11,17 +11,16 @@ function FetchWeather() {
 
   useEffect(() => {
     const fetchData = async () => {
-      navigator.geolocation.getCurrentPosition(
-        function (position) {
-          setLat(position.coords.latitude);
-          setLong(position.coords.longitude);
-        },
-        function (error) {
-          // Handle location access denial or error
-          console.error("Error getting location:", error);
-        }
-      );
+      navigator.geolocation.getCurrentPosition(function (position) {
+        setLat(position.coords.latitude);
+        setLong(position.coords.longitude);
+      });
+    };
+    fetchData();
+  }, []);
 
+  useEffect(() => {
+    const fetchData = async () => {
       if (lat !== null && long !== null) {
         await fetch(
           `${apiUrl}/weather/?lat=${lat}&lon=${long}&units=metric&lang=da&APPID=${apiKey}`
@@ -45,11 +44,7 @@ function FetchWeather() {
       }
     };
     fetchData();
-  }, [lat, long, apiUrl, apiKey, weekData]);
-
-  useEffect(() => {
-    console.log("WeekData changed:", weekData);
-  }, [weekData]);
+  }, [lat, long, apiUrl, apiKey]);
 
   return { data, weekData };
 }
