@@ -1,4 +1,4 @@
-import { WeekData } from "../Types/WeatherInterface";
+import { WeekData } from "../types/WeatherInterface";
 
 function SortWeekWeather({ weatherData }: { weatherData: WeekData | null }) {
   const weekData = weatherData?.list;

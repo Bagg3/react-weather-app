@@ -1,25 +1,43 @@
 export interface WeatherData {
   main: {
-    temp: number; // Temperature in Celsius
-    humidity: number; // Humidity percentage
-    pressure: number; // Atmospheric pressure in hPa
-    description: string; // Weather description (e.g., "Clear sky")
-    feels_like: number; // Temperature that feels like in Celsius
+    temp: number;
+    feels_like: number;
+    temp_min: number;
+    temp_max: number;
+    pressure: number;
+    humidity: number;
   };
   weather: {
-    main: string; // Weather type (e.g., "Clouds")
-    description: string; // Weather description (e.g., "Clear sky")
+    id: number;
+    main: string;
+    description: string;
+    icon: string;
   }[];
-  name: string; // Location name (e.g., "New York")
+  name: string;
   sys: {
-    country: string; // Country code (e.g., "US")
-    region: string; // Region (e.g., "New York")
-    sunset: number; // Sunset time in Unix timestamp
-    sunrise: number; // Sunrise time in Unix timestamp
+    type: number;
+    id: number;
+    country: string;
+    sunrise: number;
+    sunset: number;
   };
   wind: {
-    speed: number; // Wind speed in m/s
-    gust: number; // Wind gust in m/s
+    speed: number;
+    deg: number;
+    gust: number;
+  };
+  dt: number;
+  coord: {
+    lon: number;
+    lat: number;
+  };
+  visibility: number;
+  timezone: number;
+  id: number;
+  cod: number;
+  base: string;
+  clouds: {
+    all: number;
   };
 }
 

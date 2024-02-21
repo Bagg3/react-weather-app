@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { WeatherData, WeekData } from "../Types/WeatherInterface";
+import { WeatherData, WeekData } from "../types/WeatherInterface";
 
-function FetchWeather() {
+function useFetchWeather() {
   const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
   const apiKey = import.meta.env.VITE_REACT_APP_API_KEY;
   const [lat, setLat] = useState<number | null>(null);
@@ -49,4 +49,4 @@ function FetchWeather() {
   return { data, weekData };
 }
 
-export default FetchWeather;
+export default useFetchWeather;

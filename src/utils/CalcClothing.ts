@@ -1,4 +1,4 @@
-import { WeatherData } from "../Types/WeatherInterface";
+import { WeatherData } from "../types/WeatherInterface";
 // CALCULATIONS NOT CORRECT
 
 function CalcClothing(weather: WeatherData) {

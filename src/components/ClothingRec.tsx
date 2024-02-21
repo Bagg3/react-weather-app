@@ -1,5 +1,5 @@
-import { WeatherData } from "../Types/WeatherInterface";
-import calcClothing from "../Utility/CalcClothing";
+import { WeatherData } from "../types/WeatherInterface";
+import calcClothing from "../utils/CalcClothing";
 
 interface CalcClothingRecProps {
   weatherData: WeatherData | null; // Allow for null values
