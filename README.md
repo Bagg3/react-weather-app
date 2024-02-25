@@ -1,6 +1,6 @@
 # React Weather App
 
-This is a weather application built with React and TypeScript. It uses the OpenWeatherMap API to fetch weather data.
+This is a weather application built with React and TypeScript. It uses the OpenWeatherMap API to fetch weather data and Tailwind CSS to styling.
 
 ## Features
 
@@ -24,11 +24,10 @@ This is a weather application built with React and TypeScript. It uses the OpenW
 
 1. Clone the repository:
 
-```bash
-git clone https://github.com/username/react-weather-app.git
-cd react-weather-app
-
-```
+   ```bash
+   git clone https://github.com/username/react-weather-app.git
+   cd react-weather-app
+   ```
 
 2. Install the dependencies:
 
