@@ -1,4 +1,3 @@
-import React from "react";
 import { WeekData } from "../types/WeatherInterface";
 //import SortWeekWeather from "../Utility/SortWeekWeather";
 
