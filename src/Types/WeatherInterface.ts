@@ -101,7 +101,7 @@ interface Sys {
   pod: string;
 }
 
-interface ListItem {
+export interface ListItem {
   dt: number;
   main: Main;
   weather: Weather[];

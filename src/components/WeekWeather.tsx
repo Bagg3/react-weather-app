@@ -1,4 +1,4 @@
-import { WeekData } from "../types/WeatherInterface";
+import { WeekData, ListItem } from "../types/WeatherInterface";
 //import SortWeekWeather from "../Utility/SortWeekWeather";
 
 const WeekWeather = ({ weatherData }: { weatherData: WeekData }) => {
@@ -11,7 +11,7 @@ const WeekWeather = ({ weatherData }: { weatherData: WeekData }) => {
     <div>
       <h2>Week Weather</h2>
       <div className="week-weather">
-        {weatherData.list.map((weather) => (
+        {weatherData.list.map((weather: ListItem) => (
           <div className="max-w-sm rounded overflow-hidden shadow-lg">
             <div className="px-6 py-4">
               <div className="font-bold text-xl mb-2"></div>
