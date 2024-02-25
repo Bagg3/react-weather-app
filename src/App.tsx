@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Home from "./pages/Home";
-import { WeatherData } from "./types/WeatherInterface"; // replace with the actual path to the WeatherData type
-import useFetchWeather from "./utils/FetchWeather"; // replace with the actual path to the FetchWeather function
+import { WeatherData } from "../src/types/WeatherInterface";
+import useFetchWeather from "./utils/FetchWeather";
 
 const App = () => {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
