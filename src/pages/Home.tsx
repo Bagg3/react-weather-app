@@ -1,16 +1,15 @@
 import CurWeather from "../components/CurrentWeather";
-import useFetchWeather from "../utils/FetchWeather";
-//import WeekWeather from "../components/WeekWeather";
+import { WeatherData } from "../types/WeatherInterface";
 
-const Home = () => {
-  const { data } = useFetchWeather();
+interface HomeProps {
+  weatherData: WeatherData | null;
+}
 
+const Home = ({ weatherData }: HomeProps) => {
   return (
     <div className="flex mt-10 justify-center">
-      {data !== null ? (
-        <>
-          <CurWeather weatherData={data} />
-        </>
+      {weatherData !== null ? (
+        <CurWeather weatherData={weatherData} />
       ) : (
         <div>Loading...</div>
       )}

@@ -1,17 +1,29 @@
 import { useEffect, useState } from "react";
 import Home from "./pages/Home";
-import { WeatherData } from "../src/types/WeatherInterface";
+import { WeatherData, AppContentProps } from "../src/types/WeatherInterface";
 import useFetchWeather from "./utils/FetchWeather";
+import { QueryClient, QueryClientProvider } from "react-query";
+
+const queryClient = new QueryClient();
 
 const App = () => {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
 
+  return (
+    <QueryClientProvider client={queryClient}>
+      <AppContent setWeatherData={setWeatherData} weatherData={weatherData} />
+    </QueryClientProvider>
+  );
+};
+
+const AppContent = ({ setWeatherData, weatherData }: AppContentProps) => {
   // Fetch weather data when the component mounts
   const fetchedData = useFetchWeather();
-
   useEffect(() => {
-    setWeatherData(fetchedData.data);
-  }, [fetchedData]);
+    if (fetchedData.data) {
+      setWeatherData(fetchedData.data);
+    }
+  }, [fetchedData, setWeatherData]);
 
   // Update icon when weatherData changes
   useEffect(() => {
@@ -28,7 +40,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <Home />
+      <Home weatherData={weatherData} />
     </div>
   );
 };

@@ -127,3 +127,8 @@ interface City {
   sunrise: number;
   sunset: number;
 }
+
+export interface AppContentProps {
+  setWeatherData: React.Dispatch<React.SetStateAction<WeatherData | null>>;
+  weatherData: WeatherData | null;
+}
