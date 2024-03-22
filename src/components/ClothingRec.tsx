@@ -2,7 +2,7 @@ import { WeatherData } from "../types/WeatherInterface";
 import calcClothing from "../utils/CalcClothing";
 
 interface CalcClothingRecProps {
-  weatherData: WeatherData | null; // Allow for null values
+  weatherData: WeatherData | null;
 }
 
 const CalcClothingRec = ({ weatherData }: CalcClothingRecProps) => {

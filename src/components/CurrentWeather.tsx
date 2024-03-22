@@ -7,7 +7,7 @@ const Weather = ({ weatherData }: { weatherData: WeatherData }) => {
     <div className="p-3 bg-gradient-to-b from-[#99b1ff] via-[#48a1b8] to-[#0854ac] rounded-lg flex flex-col min-w-[40%] w-[500px] h-fit text-slate-100 shadow-md">
       <div className="flex-row mb-4">
         <div className="flex justify-between text-sm font-bold">
-          <h2 className="header font-bold text-xl">
+          <h2 className="header font-bold text-4xl mb-2">
             {weatherData.name.replace("Kommune", "")}
           </h2>
         </div>
@@ -36,7 +36,7 @@ const Weather = ({ weatherData }: { weatherData: WeatherData }) => {
           </span>
           <span>&deg;C</span>
         </div>
-        <div className="flex flex-col items-start ml-16">
+        <div className="flex flex-col items-start justify-center ml-16">
           <p>{weatherData.weather[0].main}</p>
           <p className="text-sm">
             Feels like: {Math.round(weatherData.main.feels_like)} &deg;C

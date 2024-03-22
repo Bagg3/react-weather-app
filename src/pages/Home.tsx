@@ -6,7 +6,7 @@ const Home = () => {
   const { data } = useFetchWeather();
 
   return (
-    <div className="flex justify-center">
+    <div className="flex mt-10 justify-center">
       {data !== null ? (
         <>
           <CurWeather weatherData={data} />
