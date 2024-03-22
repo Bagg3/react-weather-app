@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Home from "./pages/Home";
-import { WeatherData } from "./types/WeatherInterface";
-import useFetchWeather from "./utils/FetchWeather"; 
+import { WeatherData } from "../src/types/WeatherInterface";
+import useFetchWeather from "./utils/FetchWeather";
 
 const App = () => {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
