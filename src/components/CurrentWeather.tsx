@@ -4,7 +4,7 @@ import CalcClothingRec from "./ClothingRec";
 
 const Weather = ({ weatherData }: { weatherData: WeatherData }) => {
   return (
-    <div className="p-3 bg-gradient-to-b from-[#99b1ff] via-[#48a1b8] to-[#0854ac] rounded-lg flex flex-col min-w-[40%] w-[500px] h-fit text-slate-100 shadow-md">
+    <div className="p-4 bg-gradient-to-b from-[#99b1ff] via-[#48a1b8] to-[#0854ac] rounded-lg flex flex-col min-w-[40%] w-[500px] h-fit text-slate-100 shadow-md">
       <div className="flex-row mb-4">
         <div className="flex justify-between text-sm font-bold">
           <h2 className="header font-bold text-4xl mb-2">
